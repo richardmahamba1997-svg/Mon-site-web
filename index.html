@@ -1,32 +1,548 @@
-<! DOCTYPE html >
-< html lang="fr" >
-< head >
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site Web</title>
-< /head >
-< body >
+
+    <title>MON ENTREPRISE | Bienvenue</title>
+
+    <meta name="description"
+          content="Découvrez nos services et contactez-nous facilement.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background: #f7f8fa;
+            line-height: 1.6;
+        }
+
+        /* ===== MENU ===== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #f5b400;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f5b400;
+        }
+
+        /* ===== ACCUEIL ===== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.65)
+                ),
+                url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 75px);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #f5b400;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 7px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #f5b400;
+            color: #111;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #ffd15c;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* ===== SECTIONS ===== */
+
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* ===== A PROPOS ===== */
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .about-text h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SERVICES ===== */
+
+        .services {
+            background: #f7f8fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+        }
+
+        .service .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+        }
+
+        /* ===== GALERIE ===== */
+
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact {
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title p {
+            color: #ccc;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            font-size: 18px;
+        }
+
+        .whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #050505;
+            color: #aaa;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px;
+            }
+
+            nav ul {
+                gap: 10px;
+                font-size: 13px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
     <header>
-        <h1>Bienvenue sur mon site</h1>
-        <p>Votre partenaire de confiance</p>
+        <nav>
+            <a href="#accueil" class="logo">
+                MON<span>ENTREPRISE</span>
+            </a>
+
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <main>
-        <h2>À propos de nous</h2>
-        <p>
-            Bienvenue sur notre site web. 
-            Nous présentons ici nos services et nos activités.
-        </p>
-        <h2>Nos services</h2>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-        </ul>
-        <h2>Contact</h2>
-        <p>Téléphone : +243 XXX XXX XXX</p>
-    </main>
+
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+
+        <div class="hero-content">
+
+            <h1>
+                Bienvenue chez
+                <span>MON ENTREPRISE</span>
+            </h1>
+
+            <p>
+                Votre partenaire de confiance pour des services
+                professionnels et de qualité.
+            </p>
+
+            <a href="#services" class="btn btn-primary">
+                Découvrir nos services
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Nous contacter
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- A PROPOS -->
+    <section class="about" id="apropos">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>À propos de nous</h2>
+                <p>Découvrez qui nous sommes</p>
+            </div>
+
+            <div class="about-content">
+
+                <div class="about-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80"
+                        alt="Notre entreprise">
+                </div>
+
+                <div class="about-text">
+
+                    <h3>Une équipe à votre service</h3>
+
+                    <p>
+                        Nous sommes une entreprise engagée à offrir
+                        des services de qualité à nos clients.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Notre objectif est de satisfaire nos clients
+                        grâce à notre professionnalisme, notre sérieux
+                        et notre disponibilité.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Nos services</h2>
+                <p>Ce que nous proposons</p>
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service">
+                    <div class="icon">💼</div>
+                    <h3>Service professionnel</h3>
+                    <p>
+                        Des solutions adaptées à vos besoins.
+                    </p>
+                </div>
+
+                <div class="service">
+                    <div class="icon">⭐</div>
+                    <h3>Qualité</h3>
+                    <p>
+                        Nous accordons une grande importance
+                        à la qualité de notre travail.
+                    </p>
+                </div>
+
+                <div class="service">
+                    <div class="icon">🤝</div>
+                    <h3>Accompagnement</h3>
+                    <p>
+                        Nous vous accompagnons avec sérieux
+                        dans vos différents projets.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GALERIE -->
+    <section class="gallery" id="galerie">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Notre galerie</h2>
+                <p>Quelques images de nos activités</p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                     alt="Activité">
+
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+                     alt="Travail">
+
+                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
+                     alt="Entreprise">
+
+                <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=800&q=80"
+                     alt="Bureau">
+
+                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
+                     alt="Équipe">
+
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
+                     alt="Réunion">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre disposition</p>
+            </div>
+
+            <div class="contact-info">
+
+                <p>📞 Téléphone : +243 XXX XXX XXX</p>
+
+                <p>📧 Email : contact@monentreprise.com</p>
+
+                <p>📍 Adresse : RDC</p>
+
+            </div>
+
+            <!-- Remplace le numéro par ton numéro WhatsApp -->
+            <a
+                class="whatsapp"
+                href="https://wa.me/243XXXXXXXXX"
+                target="_blank">
+
+                💬 Nous contacter sur WhatsApp
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Mon Site Web - Tous droits réservés</p>
+
+        <p>
+            © 2026 MON ENTREPRISE.
+            Tous droits réservés.
+        </p>
+
     </footer>
-< /body >
-< /html >
+
+</body>
+</html>
