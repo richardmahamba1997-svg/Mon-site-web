@@ -1,548 +1,854 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>MON ENTREPRISE | Bienvenue</title>
-
-    <meta name="description"
-          content="Découvrez nos services et contactez-nous facilement.">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            background: #f7f8fa;
-            line-height: 1.6;
-        }
-
-        /* ===== MENU ===== */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1150px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: white;
-            font-size: 23px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: #f5b400;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #f5b400;
-        }
-
-        /* ===== ACCUEIL ===== */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 60px;
-
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.65),
-                    rgba(0,0,0,0.65)
-                ),
-                url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 7vw, 75px);
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #f5b400;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 35px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            margin: 7px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn-primary {
-            background: #f5b400;
-            color: #111;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: #ffd15c;
-        }
-
-        .btn-secondary {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #111;
-        }
-
-        /* ===== SECTIONS ===== */
-
-        section {
-            padding: 90px 20px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #666;
-        }
-
-        /* ===== A PROPOS ===== */
-
-        .about {
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 45px;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 15px;
-            display: block;
-        }
-
-        .about-text h3 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        /* ===== SERVICES ===== */
-
-        .services {
-            background: #f7f8fa;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .service {
-            background: white;
-            padding: 35px 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .service:hover {
-            transform: translateY(-8px);
-        }
-
-        .service .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .service h3 {
-            margin-bottom: 10px;
-        }
-
-        /* ===== GALERIE ===== */
-
-        .gallery {
-            background: white;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        /* ===== CONTACT ===== */
-
-        .contact {
-            background: #111;
-            color: white;
-            text-align: center;
-        }
-
-        .contact .section-title p {
-            color: #ccc;
-        }
-
-        .contact-info {
-            margin: 30px 0;
-            font-size: 18px;
-        }
-
-        .whatsapp {
-            display: inline-block;
-            background: #25D366;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* ===== FOOTER ===== */
-
-        footer {
-            background: #050505;
-            color: #aaa;
-            text-align: center;
-            padding: 25px;
-        }
-
-        /* ===== MOBILE ===== */
-
-        @media (max-width: 768px) {
-
-            nav {
-                padding: 15px;
-            }
-
-            nav ul {
-                gap: 10px;
-                font-size: 13px;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            .section-title h2 {
-                font-size: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            nav ul {
-                display: none;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JOLI-BOIS IMPRIMERIE | Impression numérique</title>
+
+<meta name="description" content="JOLI-BOIS IMPRIMERIE - Votre partenaire pour tous vos travaux d'impression numérique. Affiches, bâches, cartes de visite, invitations, autocollants, T-shirts et bien plus.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#222;
+    background:#fff;
+    line-height:1.6;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(10,10,10,0.96);
+    box-shadow:0 2px 15px rgba(0,0,0,0.25);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ffc400;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffc400;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:120px 20px 70px;
+    background:
+    linear-gradient(rgba(0,0,0,0.70),rgba(0,0,0,0.78)),
+    url("https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1800&q=80");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,78px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ffc400;
+}
+
+.hero p{
+    font-size:20px;
+    max-width:750px;
+    margin:0 auto 35px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:#ffc400;
+    color:#111;
+}
+
+.btn-primary:hover{
+    background:#fff;
+    transform:translateY(-3px);
+}
+
+.btn-outline{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-outline:hover{
+    background:white;
+    color:#111;
+}
+
+/* SECTIONS */
+
+section{
+    padding:90px 20px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title span{
+    color:#ffc400;
+}
+
+.section-title p{
+    color:#666;
+}
+
+/* ABOUT */
+
+.about{
+    background:#f7f7f7;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+.about-text h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.about-text p{
+    margin-bottom:15px;
+    color:#555;
+}
+
+.about-box{
+    background:#111;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.about-box h3{
+    color:#ffc400;
+    margin-bottom:15px;
+    font-size:28px;
+}
+
+/* SERVICES */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.service{
+    padding:30px;
+    border-radius:15px;
+    background:white;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    border-top:4px solid #ffc400;
+    transition:0.3s;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.13);
+}
+
+.service .icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.service h3{
+    margin-bottom:10px;
+}
+
+/* WHY US */
+
+.why{
+    background:#111;
+    color:white;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.why-card{
+    text-align:center;
+    padding:25px;
+}
+
+.why-card .number{
+    font-size:42px;
+    color:#ffc400;
+    font-weight:bold;
+}
+
+.why-card h3{
+    margin:10px 0;
+}
+
+/* GALLERY */
+
+.gallery{
+    background:#f7f7f7;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.gallery-item{
+    height:230px;
+    border-radius:15px;
+    overflow:hidden;
+    position:relative;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+/* CONTACT */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.contact-box{
+    background:#f7f7f7;
+    padding:35px;
+    border-radius:15px;
+}
+
+.contact-box h3{
+    margin-bottom:20px;
+}
+
+.contact-item{
+    margin:18px 0;
+}
+
+.contact-item strong{
+    display:block;
+    color:#111;
+}
+
+.whatsapp{
+    display:inline-block;
+    margin-top:15px;
+    background:#25D366;
+    color:white;
+    padding:14px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    background:#090909;
+    color:white;
+    text-align:center;
+    padding:35px 20px;
+}
+
+footer span{
+    color:#ffc400;
+}
+
+.footer-links{
+    margin-top:15px;
+}
+
+.footer-links a{
+    color:#ccc;
+    margin:0 10px;
+    text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav{
+        gap:10px;
+    }
+
+    nav a{
+        font-size:13px;
+    }
+
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .navbar{
+        padding:12px 15px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    nav{
+        gap:8px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .services-grid,
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    section{
+        padding:70px 15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- MENU -->
-    <header>
-        <nav>
-            <a href="#accueil" class="logo">
-                MON<span>ENTREPRISE</span>
-            </a>
+<header>
+<div class="navbar">
 
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="logo">
+JOLI-BOIS <span>IMPRIMERIE</span>
+</div>
 
-    <!-- ACCUEIL -->
-    <section class="hero" id="accueil">
+<nav>
+<a href="#accueil">Accueil</a>
+<a href="#apropos">À propos</a>
+<a href="#services">Services</a>
+<a href="#galerie">Galerie</a>
+<a href="#contact">Contact</a>
+</nav>
 
-        <div class="hero-content">
+</div>
+</header>
 
-            <h1>
-                Bienvenue chez
-                <span>MON ENTREPRISE</span>
-            </h1>
 
-            <p>
-                Votre partenaire de confiance pour des services
-                professionnels et de qualité.
-            </p>
+<!-- ACCUEIL -->
 
-            <a href="#services" class="btn btn-primary">
-                Découvrir nos services
-            </a>
+<section class="hero" id="accueil">
 
-            <a href="#contact" class="btn btn-secondary">
-                Nous contacter
-            </a>
+<div class="hero-content">
 
-        </div>
+<h1>
+Votre idée.<br>
+Notre <span>impression.</span>
+</h1>
 
-    </section>
+<p>
+Bienvenue chez <strong>JOLI-BOIS IMPRIMERIE</strong>,
+votre partenaire pour tous vos travaux d'impression numérique,
+avec qualité, créativité et professionnalisme.
+</p>
 
-    <!-- A PROPOS -->
-    <section class="about" id="apropos">
+<div class="buttons">
 
-        <div class="container">
+<a href="#services" class="btn btn-primary">
+Découvrir nos services
+</a>
 
-            <div class="section-title">
-                <h2>À propos de nous</h2>
-                <p>Découvrez qui nous sommes</p>
-            </div>
+<a href="#contact" class="btn btn-outline">
+Nous contacter
+</a>
 
-            <div class="about-content">
+</div>
 
-                <div class="about-image">
-                    <img
-                        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80"
-                        alt="Notre entreprise">
-                </div>
+</div>
 
-                <div class="about-text">
+</section>
 
-                    <h3>Une équipe à votre service</h3>
 
-                    <p>
-                        Nous sommes une entreprise engagée à offrir
-                        des services de qualité à nos clients.
-                    </p>
+<!-- A PROPOS -->
 
-                    <br>
+<section class="about" id="apropos">
 
-                    <p>
-                        Notre objectif est de satisfaire nos clients
-                        grâce à notre professionnalisme, notre sérieux
-                        et notre disponibilité.
-                    </p>
+<div class="container">
 
-                </div>
+<div class="section-title">
 
-            </div>
+<h2>À propos de <span>nous</span></h2>
 
-        </div>
+<p>
+Une imprimerie au service de vos projets.
+</p>
 
-    </section>
+</div>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
+<div class="about-grid">
 
-        <div class="container">
+<div class="about-text">
 
-            <div class="section-title">
-                <h2>Nos services</h2>
-                <p>Ce que nous proposons</p>
-            </div>
+<h3>JOLI-BOIS IMPRIMERIE</h3>
 
-            <div class="services-grid">
+<p>
+Nous sommes une maison spécialisée dans
+<strong>l'impression numérique</strong> et la réalisation
+de différents supports de communication et de visibilité.
+</p>
 
-                <div class="service">
-                    <div class="icon">💼</div>
-                    <h3>Service professionnel</h3>
-                    <p>
-                        Des solutions adaptées à vos besoins.
-                    </p>
-                </div>
+<p>
+Notre objectif est de transformer vos idées en supports
+visuels de qualité, adaptés à vos besoins personnels,
+professionnels, commerciaux et événementiels.
+</p>
 
-                <div class="service">
-                    <div class="icon">⭐</div>
-                    <h3>Qualité</h3>
-                    <p>
-                        Nous accordons une grande importance
-                        à la qualité de notre travail.
-                    </p>
-                </div>
+<p>
+Que vous soyez particulier, entreprise, association,
+commerce ou organisation, nous vous accompagnons
+dans la réalisation de vos projets.
+</p>
 
-                <div class="service">
-                    <div class="icon">🤝</div>
-                    <h3>Accompagnement</h3>
-                    <p>
-                        Nous vous accompagnons avec sérieux
-                        dans vos différents projets.
-                    </p>
-                </div>
+</div>
 
-            </div>
+<div class="about-box">
 
-        </div>
+<h3>Notre engagement</h3>
 
-    </section>
+<p>
+✔ Qualité d'impression
+</p>
 
-    <!-- GALERIE -->
-    <section class="gallery" id="galerie">
+<p>
+✔ Travail soigné
+</p>
 
-        <div class="container">
+<p>
+✔ Créativité et finition professionnelle
+</p>
 
-            <div class="section-title">
-                <h2>Notre galerie</h2>
-                <p>Quelques images de nos activités</p>
-            </div>
+<p>
+✔ Respect des besoins du client
+</p>
 
-            <div class="gallery-grid">
+<p>
+✔ Service fiable et professionnel
+</p>
 
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
-                     alt="Activité">
+</div>
 
-                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
-                     alt="Travail">
+</div>
+</div>
 
-                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80"
-                     alt="Entreprise">
+</section>
 
-                <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=800&q=80"
-                     alt="Bureau">
 
-                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80"
-                     alt="Équipe">
+<!-- SERVICES -->
 
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
-                     alt="Réunion">
+<section id="services">
 
-            </div>
+<div class="container">
 
-        </div>
+<div class="section-title">
 
-    </section>
+<h2>Nos <span>services</span></h2>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
+<p>
+Tous vos travaux d'impression réunis au même endroit.
+</p>
 
-        <div class="container">
+</div>
 
-            <div class="section-title">
-                <h2>Contactez-nous</h2>
-                <p>Nous sommes à votre disposition</p>
-            </div>
+<div class="services-grid">
 
-            <div class="contact-info">
+<div class="service">
+<div class="icon">🖨️</div>
+<h3>Impression numérique</h3>
+<p>
+Documents, flyers, brochures, dépliants,
+rapports et différents supports imprimés.
+</p>
+</div>
 
-                <p>📞 Téléphone : +243 XXX XXX XXX</p>
+<div class="service">
+<div class="icon">📢</div>
+<h3>Affiches & Bâches</h3>
+<p>
+Affiches publicitaires, bâches événementielles,
+banderoles et supports grand format.
+</p>
+</div>
 
-                <p>📧 Email : contact@monentreprise.com</p>
+<div class="service">
+<div class="icon">💼</div>
+<h3>Cartes de visite</h3>
+<p>
+Cartes de visite professionnelles pour renforcer
+votre image et votre identité.
+</p>
+</div>
 
-                <p>📍 Adresse : RDC</p>
+<div class="service">
+<div class="icon">🎉</div>
+<h3>Invitations</h3>
+<p>
+Invitations pour mariages, anniversaires,
+cérémonies et événements.
+</p>
+</div>
 
-            </div>
+<div class="service">
+<div class="icon">🏷️</div>
+<h3>Autocollants & Étiquettes</h3>
+<p>
+Étiquettes, stickers, autocollants publicitaires
+et supports personnalisés.
+</p>
+</div>
 
-            <!-- Remplace le numéro par ton numéro WhatsApp -->
-            <a
-                class="whatsapp"
-                href="https://wa.me/243XXXXXXXXX"
-                target="_blank">
+<div class="service">
+<div class="icon">👕</div>
+<h3>Personnalisation</h3>
+<p>
+T-shirts, vêtements, objets et supports
+personnalisés selon vos besoins.
+</p>
+</div>
 
-                💬 Nous contacter sur WhatsApp
+<div class="service">
+<div class="icon">📸</div>
+<h3>Photos & Supports</h3>
+<p>
+Impression photo et réalisation de supports
+visuels pour vos souvenirs.
+</p>
+</div>
 
-            </a>
+<div class="service">
+<div class="icon">🎨</div>
+<h3>Conception graphique</h3>
+<p>
+Création d'affiches, logos, visuels publicitaires
+et autres supports graphiques.
+</p>
+</div>
 
-        </div>
+<div class="service">
+<div class="icon">🏢</div>
+<h3>Communication d'entreprise</h3>
+<p>
+Supports imprimés pour entreprises,
+commerces, associations et organisations.
+</p>
+</div>
 
-    </section>
+</div>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
+</section>
 
-        <p>
-            © 2026 MON ENTREPRISE.
-            Tous droits réservés.
-        </p>
 
-    </footer>
+<!-- POURQUOI NOUS -->
+
+<section class="why">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Pourquoi choisir <span>JOLI-BOIS ?</span></h2>
+
+<p style="color:#ccc;">
+Nous faisons de votre satisfaction notre priorité.
+</p>
+
+</div>
+
+<div class="why-grid">
+
+<div class="why-card">
+<div class="number">01</div>
+<h3>Qualité</h3>
+<p>Des impressions propres et soignées.</p>
+</div>
+
+<div class="why-card">
+<div class="number">02</div>
+<h3>Créativité</h3>
+<p>Des solutions adaptées à votre image.</p>
+</div>
+
+<div class="why-card">
+<div class="number">03</div>
+<h3>Professionnalisme</h3>
+<p>Un travail réalisé avec sérieux.</p>
+</div>
+
+<div class="why-card">
+<div class="number">04</div>
+<h3>Confiance</h3>
+<p>Un partenaire pour vos projets.</p>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- GALERIE -->
+
+<section class="gallery" id="galerie">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Quelques réalisations</h2>
+
+<p>
+Découvrez notre univers d'impression et de communication visuelle.
+</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?auto=format&fit=crop&w=900&q=80">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1600195077078-7c815f540a3d?auto=format&fit=crop&w=900&q=80">
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Contactez-<span>nous</span></h2>
+
+<p>
+Besoin d'une impression ? Parlons de votre projet.
+</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-box">
+
+<h3>JOLI-BOIS IMPRIMERIE</h3>
+
+<div class="contact-item">
+<strong>📍 Adresse</strong>
+Votre adresse ici
+</div>
+
+<div class="contact-item">
+<strong>📞 Téléphone</strong>
+Votre numéro ici
+</div>
+
+<div class="contact-item">
+<strong>📧 E-mail</strong>
+Votre e-mail ici
+</div>
+
+<div class="contact-item">
+<strong>🕐 Horaires</strong>
+Lundi – Samedi
+</div>
+
+</div>
+
+
+<div class="contact-box">
+
+<h3>Demandez votre impression</h3>
+
+<p>
+Vous avez besoin d'une affiche, d'une bâche,
+d'une carte de visite, d'une invitation ou
+d'un autre support ?
+</p>
+
+<p style="margin-top:15px;">
+Contactez-nous directement pour discuter
+de votre projet et obtenir plus d'informations.
+</p>
+
+<a href="#" class="whatsapp">
+💬 Nous contacter sur WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 <span>JOLI-BOIS IMPRIMERIE</span>.
+Tous droits réservés.
+</p>
+
+<div class="footer-links">
+<a href="#accueil">Accueil</a>
+<a href="#services">Services</a>
+<a href="#galerie">Galerie</a>
+<a href="#contact">Contact</a>
+</div>
+
+</footer>
 
 </body>
 </html>
